@@ -30,9 +30,12 @@ function Listing() {
     loadFilmes()
   }, [pageNumber])
 
+  const handlePageChange = (newPageNumber: number) => {
+    setPageNumber(newPageNumber)
+  }
   return (
     <>
-      <Pagination />
+      <Pagination page={page} onChange={handlePageChange} />
       <div className="container" >
         <div className="row">
           {page.content.map(movie => (
@@ -40,9 +43,7 @@ function Listing() {
               <MovieCard movie={movie} />
             </div>
           ))}
-
         </div>
-
       </div>
     </>
   )
